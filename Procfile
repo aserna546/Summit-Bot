@@ -1,1 +1,1 @@
-worker: python change_role.py
+worker: python summit_bot.py
