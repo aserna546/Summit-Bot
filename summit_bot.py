@@ -66,4 +66,13 @@ async def on_raw_reaction_remove(reaction):
     role_name = reactions.get(reaction.emoji.name)
     await change_role(role_list, member, False, role_name)
 
+@client.event
+async def on_member_join(member):
+  role = discord.utils.get(member.guild.roles, name='Unverified')
+  await member.add_roles(role)
+
+@client.event
+async def on_member_remove(member):
+  channel = discord.utils.get(member.guild.text_channels, name='users-joining')
+  await channel.send(f'{member.display_name} has left the server.')
 client.run('NjMzMDgwMDk2OTUzMDczNjY1.XaQStg.AUDx5w1O8xfcNPnZbhNmzPHZYgY')
