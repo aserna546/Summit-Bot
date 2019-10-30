@@ -49,7 +49,7 @@ reactions = {
 @client.event
 async def on_raw_reaction_add(reaction): 
   channel = await client.fetch_channel(reaction.channel_id)
-  if channel.name == 'raid-roles':
+  if channel.id == 544800754519769088:
     role_list = channel.guild.roles
     #print(reaction.emoji.name)
     member = channel.guild.get_member(reaction.user_id)
@@ -59,7 +59,7 @@ async def on_raw_reaction_add(reaction):
 @client.event
 async def on_raw_reaction_remove(reaction):
   channel = await client.fetch_channel(reaction.channel_id)
-  if channel.name == 'raid-roles':
+  if channel.id == 544800754519769088:
     role_list = channel.guild.roles
     #print(reaction.emoji.name)
     member = channel.guild.get_member(reaction.user_id)
@@ -73,6 +73,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_member_remove(member):
-  channel = discord.utils.get(member.guild.text_channels, name='users-joining')
+  channel = discord.utils.get(
+      member.guild.text_channels, id=545414048464764959)
   await channel.send(f'{member.display_name} has left the server.')
 client.run('NjMzMDgwMDk2OTUzMDczNjY1.XaQStg.AUDx5w1O8xfcNPnZbhNmzPHZYgY')
