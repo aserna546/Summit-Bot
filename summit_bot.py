@@ -1,4 +1,5 @@
 import discord
+import datetime
 
 client = discord.Client()
 
@@ -76,10 +77,10 @@ async def on_member_remove(member):
   channel = discord.utils.get(
       member.guild.text_channels, id=545414048464764959)
   embded = discord.Embed(title="❌ User left")
-  embded.description = f'{member.name}'
-  embded.set_thumbnail(member.avatar_url)
-  embded.set_footer(embded.timestamp)
-  await channel.send(embded)
+  embded.description = f'{str(member)}'
+  embded.set_thumbnail(url=member.avatar_url)
+  embded.set_footer(text='left on: ' + str(datetime.datetime.now()))
+  await channel.send(embed=embded)
 
 
 client.run('NjMzMDgwMDk2OTUzMDczNjY1.XaQStg.AUDx5w1O8xfcNPnZbhNmzPHZYgY')
