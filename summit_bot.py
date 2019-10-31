@@ -75,5 +75,11 @@ async def on_member_join(member):
 async def on_member_remove(member):
   channel = discord.utils.get(
       member.guild.text_channels, id=545414048464764959)
-  await channel.send(f'{member.display_name} has left the server.')
+  embded = discord.Embed(title="❌ User left")
+  embded.description = f'{member.name}'
+  embded.set_thumbnail(member.avatar_url)
+  embded.set_footer(embded.timestamp)
+  await channel.send(embded)
+
+
 client.run('NjMzMDgwMDk2OTUzMDczNjY1.XaQStg.AUDx5w1O8xfcNPnZbhNmzPHZYgY')
