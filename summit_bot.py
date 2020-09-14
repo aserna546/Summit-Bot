@@ -1,7 +1,12 @@
 import discord
 import datetime
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
 client = discord.Client()
+
 
 async def change_role(roles: list, user, add, name: str):
   """
@@ -82,5 +87,4 @@ async def on_member_remove(member):
   embded.set_footer(text='left on: ' + str(datetime.datetime.now()))
   await channel.send(embed=embded)
 
-
-client.run('NjMzMDgwMDk2OTUzMDczNjY1.XaQStg.AUDx5w1O8xfcNPnZbhNmzPHZYgY')
+client.run(TOKEN)
